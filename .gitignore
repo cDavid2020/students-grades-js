@@ -10,3 +10,5 @@
 .eslintcache
 package-lock.json
 pnpm-lock.yaml
+
+db.json
