@@ -1,28 +1,187 @@
-# Node Starter
+# Grades
 
-~~**Update:** A `pnpm-lock.yaml` file was added to the root of the project. If possible use `pnpm` over `npm`. You might like it better. See [the docs 📝](https://pnpm.io/motivation) if interested. If not, delete this file.~~
+## Getting Started
 
-## TLDR
+Create your `db.json`. Set up `json-server` and `got`. Here's the data from `db.json`:
 
-Use of this starter template assumes that you have a 'complete dev environment' setup - a terminal, Node, VS Code, at least. If not, you may want to [start here.](https://www.notion.so/codefinity/Setting-up-a-Local-Dev-Environment-for-JS-02a4e9f4a30043d3a8e7d109be3448f4)
+```json
+{
+  "grades": [
+    {
+      "id": 1,
+      "name": "Mark West",
+      "grades": [
+        {
+          "id": 1,
+          "type": "HW",
+          "score": 100
+        },
+        {
+          "id": 2,
+          "type": "Quiz",
+          "score": 90
+        },
+        {
+          "id": 3,
+          "type": "Test",
+          "score": 80
+        },
+        {
+          "id": 4,
+          "type": "HW",
+          "score": 70
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "John Doe",
+      "grades": [
+        {
+          "id": 1,
+          "type": "HW",
+          "score": 99
+        },
+        {
+          "id": 2,
+          "type": "Quiz",
+          "score": 91
+        },
+        {
+          "id": 3,
+          "type": "Test",
+          "score": 83
+        },
+        {
+          "id": 4,
+          "type": "HW",
+          "score": 74
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Jane Doe",
+      "grades": [
+        {
+          "id": 1,
+          "type": "HW",
+          "score": 98
+        },
+        {
+          "id": 2,
+          "type": "Quiz",
+          "score": 92
+        },
+        {
+          "id": 3,
+          "type": "Test",
+          "score": 84
+        },
+        {
+          "id": 4,
+          "type": "HW",
+          "score": 75
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "John Smith",
+      "grades": [
+        {
+          "id": 1,
+          "type": "HW",
+          "score": 97
+        },
+        {
+          "id": 2,
+          "type": "Quiz",
+          "score": 93
+        },
+        {
+          "id": 3,
+          "type": "Test",
+          "score": 85
+        },
+        {
+          "id": 4,
+          "type": "HW",
+          "score": 76
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Jane Smith",
+      "grades": [
+        {
+          "id": 1,
+          "type": "HW",
+          "score": 96
+        },
+        {
+          "id": 2,
+          "type": "Quiz",
+          "score": 94
+        },
+        {
+          "id": 3,
+          "type": "Test",
+          "score": 86
+        },
+        {
+          "id": 4,
+          "type": "HW",
+          "score": 77
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "John West",
+      "grades": [
+        {
+          "id": 1,
+          "type": "HW",
+          "score": 95
+        },
+        {
+          "id": 2,
+          "type": "Quiz",
+          "score": 95
+        },
+        {
+          "id": 3,
+          "type": "Test",
+          "score": 87
+        },
+        {
+          "id": 4,
+          "type": "HW",
+          "score": 78
+        }
+      ]
+    }
+  ]
+}
+```
 
-1. Click that big green button to start using it.
-2. `clone` your new repo from your GitHub to your local computer
-3. `cd` into the `clone`d repo and enter: `npm i`.
-4. `npm start`
+In the `app/api.service.js`, just write a method to get all of the grades data, as we have been doing. Then, in the `app/index.js` file, write a function that will get all of the grades data and then call the functions that you will write to complete the requirements below.
 
-## Some of What's Included
+The functions below would be in `app/lib.js`.
 
-- [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
-- Various VS Code 'settings' and 'extensions.' Look in the bottom right when you open this up in VS Code to install them.
-- [Vitest](https://vitest.dev/) for testing. Just do `npm test` or `npm t`.
+## Requirements
 
-## How To Use
+1. `getAllStudentNames`.
+1. `getStudentById`.
+1. `getStudentGradeById`. Given the id for a grade and a student, return the grade. For example: `getStudentGradeById(2, 3)` should return: `{ id: 2, type: 'Quiz', score: 92 }`. In this case, the student with id 3 is Jane Doe. Jane Doe has a grade with id 2. Jane Doe's grade with id 2 is a Quiz with a score of 92.
+1. `getStudentGradesByType`. Given a student's id and the type of grade, for instance `"HW"`, give me back an array of just the HW scores.
+1. `addGrade`. Given a student's id, a grade type, and a score, add a new grade to the student's grades array. For example: `addGrade(1, "HW", 100)` should add a new grade to Mark West's grades array. The new grade should have a type of "HW", and a score of 100. **Note:** Don't worry about adding the `id` to any new grades.
+1. `updateGrade`. Given a student's id, a grade id, and a new score, update the grade with the new score. For example: `updateGrade(1, 1, 100)` should update Mark West's grade with id 1 to have a score of 100.
+1. `deleteGrade`. Given a student's id and a grade id, delete the grade from the student's grades array. For example: `deleteGrade(1, 1)` should delete Mark West's grade with id 1 from his grades array.
 
-Run `npm i` to get all the things installed.
+## Stretch
 
-`npm start` will watch the `app` directory for any changes using `nodemon`
-
-## Other Notes
-
-To use the new experimental `fetch` that's now in Node, just add: `/* global fetch */` to the top of your file. This will appease ESLint.
+1. `getStudentAverageGrade`. Given a student, return the average grade. For example: `getStudentAverageGrade(1)` should return: `85`. In this case, the student with id 1 is Mark West. Mark West has 4 grades. The average of those 4 grades is 85. Hint: use `reduce`.
+1. Create `tests/lib.test.js`. Write tests ✅.
