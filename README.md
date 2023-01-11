@@ -2,7 +2,7 @@
 
 ## Getting Started
 
-Create your `db.json`. Set up `json-server` and `got`. Here's the data from `db.json`:
+Create your `db.json`. Set up `json-server` and `got`. Here's the data for `db.json`:
 
 ```json
 {
