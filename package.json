@@ -16,6 +16,7 @@
     "vitest": "^0.26.2"
   },
   "dependencies": {
+    "got": "^12.5.3",
     "json-server": "^0.17.1"
   }
 }
