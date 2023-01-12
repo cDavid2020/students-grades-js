@@ -4,6 +4,7 @@ import {
   getStudentById,
   getStudentGradeById,
   getStudentGradesByType,
+  addGrade,
 } from "./lib.js";
 
 it("should return all names from roster", () => {
@@ -102,4 +103,37 @@ it("should find all grades of a specific type for a specific student", () => {
 
   expect(actual1).toEqual(expected1);
   expect(actual2).toEqual(expected2);
+});
+
+it("should add a grade to a student", () => {
+  const inputRoster = [
+    {
+      id: 1,
+      name: "Jack",
+      grades: [{ id: 1 }, { id: 2 }, { id: 3 }],
+    },
+    {
+      id: 2,
+      name: "Jill",
+      grades: [{ id: 1 }, { id: 2 }, { id: 3 }],
+    },
+  ];
+  const inputGradeType = "HW";
+  const inputScore = 100;
+  const inputStudentId = 1;
+
+  const expected = {
+    id: 1,
+    name: "Jack",
+    grades: [{ id: 1 }, { id: 2 }, { id: 3 }, { type: "HW", score: 100 }],
+  };
+
+  const actual = addGrade({
+    roster: inputRoster,
+    gradeType: inputGradeType,
+    score: inputScore,
+    studentId: inputStudentId,
+  });
+
+  expect(actual).toEqual(expected);
 });

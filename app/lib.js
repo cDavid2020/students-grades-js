@@ -20,3 +20,21 @@ export const getStudentGradesByType = ({ roster, gradeType, studentId }) => {
 
   return { grades: foundStudentGrades, name: foundStudent.name };
 };
+
+export const addGrade = ({ roster, gradeType, score, studentId }) => {
+  const foundStudent = getStudentById(roster, studentId);
+  const foundStudentCurrentGrades = foundStudent.grades;
+
+  const newGrade = {
+    type: gradeType,
+    score,
+  };
+
+  const newStudentGrades = [...foundStudentCurrentGrades, newGrade];
+
+  return {
+    ...foundStudent,
+    grades: newStudentGrades,
+  };
+};
+
