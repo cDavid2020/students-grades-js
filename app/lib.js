@@ -59,15 +59,8 @@ export const updateGrade = ({ roster, gradeId, updatedScore, studentId }) => {
   // 'foundStudent' is a LOCALLY SCOPED VARIABLE that is only available within this function
   foundStudent.grades = [...updatedGrades];
 
-  const updatedRoster = roster.map((student) => {
-    if (student.id === studentId) {
-      return foundStudent;
-    }
-
-    return student;
-  });
-
-  return updatedRoster;
+  // Just send back the updated student (not the entire roster)
+  return foundStudent;
 };
 
 export const deleteGrade = ({ roster, gradeId, studentId }) => {
