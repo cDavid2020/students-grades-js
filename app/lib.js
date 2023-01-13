@@ -74,13 +74,5 @@ export const deleteGrade = ({ roster, gradeId, studentId }) => {
 
   foundStudent.grades = [...gradesWithoutDeletedGrade];
 
-  const updatedRoster = roster.map((student) => {
-    if (student.id === studentId) {
-      return foundStudent;
-    }
-
-    return student;
-  });
-
-  return updatedRoster;
+  return foundStudent;
 };
